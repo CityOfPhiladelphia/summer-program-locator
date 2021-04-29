@@ -97,7 +97,18 @@ pinboard({
     // password: process.env.VUE_APP_CYCLOMEDIA_PASSWORD,
     // apiKey: process.env.VUE_APP_CYCLOMEDIA_API_KEY,
   },
-  markerType: 'pin-marker',
+  markerType: 'circle-marker',
+  circleMarkers:{
+    // circleColors: {
+    //   'Food Site': '#0F4D90',
+    //   'Senior Meal Site': '#D67D00',
+    //   'Student Meal Site': '#721817',
+    //   'Outdoor Meal Site': '#506D0A',
+    // },
+    weight: 0,
+    size: 16,
+    mobileSize: 20,
+  },
   map: {
     type: 'mapbox',
     // tiles: 'hosted',

@@ -1,18 +1,82 @@
 <template>
   <div>
-    <div class="cell medium-12">
+    <div class="grid-x">
       <div
         v-if="address"
-        class="grid-x detail"
+        class="small-12 grid-x detail"
       >
-        <div class="small-2">
+        <div class="small-4">
           <font-awesome-icon icon="map-marker-alt" />
         </div>
-        <div class="small-22">
+        <div class="small-20">
           {{ address }}<br>
           Philadelphia, PA {{ zipcode }}
         </div>
       </div>
+
+      <div
+        v-if="item.attributes.activity_type"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Activity Type: {{ item.attributes.activity_type }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.partner_name"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Partner: {{ item.attributes.partner_name }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.programming_type"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Programming Type: {{ item.attributes.programming_type }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.registration_start_date"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Registration Start Date: {{ regStartDate }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.registration_end_date"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Registration End Date: {{ regEndDate }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.program_start_date"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Program Start Date: {{ progStartDate }}
+        </div>
+      </div>
+
+      <div
+        v-if="item.attributes.program_end_date"
+        class="small-12 grid-x detail"
+      >
+        <div>
+          Programming End Date: {{ progEndDate }}
+        </div>
+      </div>
+
     </div>
 
     <div class="columns is-mobile no-margins">
@@ -43,8 +107,6 @@
         </div>
       </div>
     </div>
-
-
 
     <div class="cell medium-12">
       <div
@@ -118,11 +180,26 @@ export default {
       let dateStart = new Date(currentYear, currentMonth-1, currentDay);
       return parseInt(format(dateStart, 'T'));
     },
+    regStartDate() {
+      return format(this.$props.item.attributes.registration_start_date, 'MMM dd');
+    },
+    regEndDate() {
+      return format(this.$props.item.attributes.registration_end_date, 'MMM dd');
+    },
+    progStartDate() {
+      return format(this.$props.item.attributes.program_start_date, 'MMM dd');
+    },
+    progEndDate() {
+      return format(this.$props.item.attributes.program_end_date, 'MMM dd');
+    },
     transforms() {
       return transforms;
     },
     address() {
       return this.$props.item.attributes.address;
+    },
+    activityType() {
+      return this.$props.item.attributes.activity_type;
     },
     days() {
       let allDays = [ 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday' ];
