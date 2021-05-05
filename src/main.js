@@ -35,8 +35,8 @@ const customComps = {
 pinboard({
   // baseConfig: BASE_CONFIG_URL,
   app: {
-    title: 'Summer Program Locator',
-    subtitle: 'Find OCF services in Philadelphia',
+    title: 'Summer programs',
+    subtitle: 'Find free, in-person summer programs for children and teens',
     // logoAlt: 'Office of Immigrant Affairs, City of Philadelphia',
     type: 'ocfData',
   },
@@ -50,7 +50,6 @@ pinboard({
   comboSearch: {
     dropdown: [
       'address',
-      'keyword',
     ],
   },
   locationInfo: {
@@ -63,12 +62,12 @@ pinboard({
       return item.attributes.enabled_disabled === 'Enabled';
     },
   },
-  // refine: {
-  //   type: 'categoryField_value',
-  //   value: function(item) {
-  //     return item.attributes.activity_type;
-  //   },
-  // },
+  refine: {
+    type: 'categoryField_value',
+    value: function(item) {
+      return item.attributes.school_type;
+    },
+  },
   dataSources: {
     ocfData,
   },

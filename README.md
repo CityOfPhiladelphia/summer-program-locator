@@ -1,6 +1,6 @@
 # summer-program-locator
 
-This is the sourcecode for the Summer Program Locator app.
+This is the sourcecode for the Summer programs app.
 
 The app uses the framework [Pinboard](https://github.com/CityOfPhiladelphia/pinboard), in npm as [@phila/pinboard](https://www.npmjs.com/package/@phila/pinboard).
 
