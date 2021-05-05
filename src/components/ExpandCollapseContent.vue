@@ -241,6 +241,7 @@ export default {
       }else if (this.item.attributes.registration_end_date >= this.currentUnixDate  ){
         return "closed";
       }
+      //TODO FIX THIS WHOLE THING
       return '';
       
 
