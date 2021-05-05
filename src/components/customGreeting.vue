@@ -22,6 +22,16 @@
         v-html="$t('app.viewList')"
       />
     </div>
+    <h1>About this finder</h1>
+    <p>This tool can help you find free, in-person summer camps and programs for children and teens in Philadelphia. </p>
+    <div>
+      You can: 
+      <ul>
+        <li>Search for a program by address. </li>
+        <li>Click on a map location for specific site information. </li>
+        <li>Filter sites by grade level and registration status. </li>
+      </ul>
+    </div>
   </div>
 </template>
 

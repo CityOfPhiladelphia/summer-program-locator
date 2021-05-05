@@ -64,12 +64,32 @@ pinboard({
       return item.attributes.enabled_disabled === 'Enabled';
     },
   },
-  refine: {
-    type: 'categoryField_value',
-    value: function(item) {
-      return item.attributes.school_type;
-    },
-  },
+  // refine: {
+  //   type: 'multipleFieldGroups',
+  //   patientAge: {
+  //     'High school': {
+  //       unique_key: 'high_school',
+  //       // i18n_key: 'patientAge.year18',
+  //       value: function(item) {
+  //         return item.attributes.school_type === 'high_school';
+  //       },
+  //     },
+  //     'Middle school': {
+  //       unique_key: 'middle_school',
+  //       // i18n_key: 'patientAge.year14',
+  //       value: function(item) {
+  //         return item.attributes.school_type === 'middle_school';
+  //       },
+  //     },
+  //     'Grade school': {
+  //       unique_key: 'elementary_school',
+  //       // i18n_key: 'patientAge.pedCare',
+  //       value: function(item) {
+  //         return item.attributes.school_type === 'elementary_school';
+  //       },
+  //     },
+  //   },
+  // },
   dataSources: {
     ocfData,
   },

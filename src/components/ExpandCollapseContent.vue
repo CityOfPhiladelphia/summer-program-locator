@@ -6,24 +6,24 @@
         class="small-12 detail"
       >
         <div class="grid-x">
-          <div class="small-3">
+          <div class="small-3 cell bottom-spacer">
             <font-awesome-icon
               icon="handshake"
               fixed-width
             />
           </div>
-          <div class="small-21">
+          <div class="small-21 cell bottom-spacer">
             <a :href="item.attributes.website">{{ item.attributes.partner_name }}</a>
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3">
+          <div class="small-3 cell bottom-spacer">
             <font-awesome-icon
               icon="map-marker-alt"
               fixed-width
             />
           </div>
-          <div class="small-21">
+          <div class="small-21 cell bottom-spacer">
             {{ address }}<br>
             Philadelphia, PA {{ zipcode }}
           </div>
@@ -31,40 +31,40 @@
       </div>
       <div
         v-if="item.attributes.programming_type"
-        class="small-12 detail"
+        class="small-11 detail"
       >
         <div><b>Contact information</b></div>
 
         <div class="grid-x">
-          <div class="small-3">
+          <div class="small-3 cell bottom-spacer">
             <font-awesome-icon
-              icon="map-marker-alt"
+              icon="user"
               fixed-width
             />
           </div>
-          <div class="small-21">
+          <div class="small-21 cell bottom-spacer">
             {{ item.attributes.primary_contact }}
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3">
+          <div class="small-3 cell bottom-spacer">
             <font-awesome-icon
               icon="phone"
               fixed-width
             />
           </div>
-          <div class="small-21">
+          <div class="small-21 cell bottom-spacer">
             {{ item.attributes.contact_phone_number }}
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3">
+          <div class="small-3 cell bottom-spacer">
             <font-awesome-icon
               icon="envelope"
               fixed-width
             />
           </div>
-          <div class="small-21">
+          <div class="small-21 cell bottom-spacer">
             <a :href="item.attributes.contact_email_address">{{ item.attributes.contact_email_address }}</a>
           </div>
         </div>
@@ -73,16 +73,16 @@
     <hr>
     <div
       v-if="item.attributes.registration_start_date"
-      class="small-24 detail"
+      class="cell small-24 detail"
     >
       <div class="grid-x">
-        <div class="medium-6">
+        <div class="cell medium-6 bottom-spacer">
           Register
         </div>
-        <div class="medium-6">
+        <div class="cell medium-7">
           {{ regStartDate }} - {{ regEndDate }}
         </div>
-        <div class="medium-6">
+        <div class="medium-7">
           <div
             v-if="regLabel === 'open'"
             class="open label"
@@ -110,27 +110,29 @@
         class="small-24 detail"
       >
         <div class="grid-x">
-          <div class="medium-6">
+          <div class="cell medium-6 bottom-spacer">
             Open to
           </div>
-          <div class="medium-6">
+          <div class="cell medium-6 bottom-spacer">
             {{ schoolType }}
           </div>
         </div>
 
 
         <div class="grid-x">
-          <div class="medium-6">
+          <div class="cell medium-6 ">
             Program dates
           </div>
-          <div class="medium-6">
-            {{ progStartDate }} - {{ progEndDate }}
+          <div class="cell medium-8">
+            <div class="bottom-spacer">
+              {{ progStartDate }} - {{ progEndDate }}
+            </div>
             <div
               v-for="(day, index) of days"
               :key="index"
             >
               <div
-                class="columns is-mobile no-margins"
+                class="cell is-mobile no-margins"
               >
                 <div class="table-column is-paddingless standard-width is-captialized">
                   {{ day.label }}
@@ -155,11 +157,11 @@
         v-if="item.attributes.CATEGORY"
         class="grid-x detail"
       >
-        <div class="small-2">
+        <div class="cell small-2">
           <font-awesome-icon icon="hand-holding-heart" />
         </div>
         <div
-          class="small-22"
+          class="cell small-22"
           v-html="$t('sections.' + section + '.subsections[\'' + item.attributes.CATEGORY + '\'].name')"
         />
       </div>
@@ -168,10 +170,10 @@
         v-if="item.attributes.phone_number"
         class="grid-x detail"
       >
-        <div class="small-2">
+        <div class="cell small-2">
           <font-awesome-icon icon="phone" />
         </div>
-        <div class="small-22">
+        <div class="cell small-22">
           {{ item.attributes.phone_number }}
         </div>
       </div>
@@ -225,7 +227,6 @@ export default {
       return format(this.$props.item.attributes.registration_start_date, 'MMMM dd');
     },
     regLabel(){
-
 
       // let allReg = ['upcoming', 'open', 'closed'];
       // let item = this.item;
@@ -366,11 +367,14 @@ export default {
 </script>
 
 <style lang="scss">
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Open+Sans&display=swap');
 .label {
   padding: 3px 10px;
   text-transform: uppercase;
-  font-weight:bold;
+  font-weight:600;
+  width: auto;
+  display: inline;
+  font-family: 'Montserrat', sans-serif;
   &.open{
     background-color: #C5F1B7;
   }
@@ -463,5 +467,12 @@ export default {
 }
 .is-captialized{
   text-transform: capitalize;
+}
+
+.bottom-spacer{
+  margin-bottom: 1rem;
+}
+.no-margins{
+  margin: 0;
 }
 </style>
