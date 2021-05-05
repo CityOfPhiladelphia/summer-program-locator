@@ -16,7 +16,9 @@ if (hostname !== 'localhost' && !hostname.match(/(\d+\.){3}\d+/)) {
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExclamationTriangle';
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons/faHandHoldingHeart';
-library.add(faExclamationTriangle, faHandHoldingHeart);
+import { faHandshake } from '@fortawesome/free-solid-svg-icons/faHandshake';
+
+library.add(faExclamationTriangle, faHandHoldingHeart, faHandshake);
 
 // import pinboard
 import pinboard from '@phila/pinboard/src/main.js';
@@ -37,12 +39,12 @@ pinboard({
   app: {
     title: 'Summer programs',
     subtitle: 'Find free, in-person summer programs for children and teens',
-    // logoAlt: 'Office of Immigrant Affairs, City of Philadelphia',
+    logoAlt: 'City of Philadelphia',
     type: 'ocfData',
   },
   customComps,
   header: {
-    logo: false,
+    logo: true,
   },
   gtag: {
     category: 'rf-ocf',
@@ -54,7 +56,7 @@ pinboard({
   },
   locationInfo: {
     siteName: function(item, transforms) {
-      return item.attributes.address;
+      return item.attributes.site_name;
     },
   },
   hiddenRefine: {
@@ -72,7 +74,7 @@ pinboard({
     ocfData,
   },
   router: {
-    enabled: false,
+    enabled: true,
   },
   geocoder: {
     url(input) {

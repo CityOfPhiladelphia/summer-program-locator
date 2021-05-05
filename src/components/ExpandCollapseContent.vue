@@ -2,108 +2,150 @@
   <div>
     <div class="grid-x">
       <div
-        v-if="address"
-        class="small-12 grid-x detail"
-      >
-        <div class="small-4">
-          <font-awesome-icon icon="map-marker-alt" />
-        </div>
-        <div class="small-20">
-          {{ address }}<br>
-          Philadelphia, PA {{ zipcode }}
-        </div>
-      </div>
-
-      <div
-        v-if="item.attributes.activity_type"
-        class="small-12 grid-x detail"
-      >
-        <div>
-          Activity Type: {{ item.attributes.activity_type }}
-        </div>
-      </div>
-
-      <div
         v-if="item.attributes.partner_name"
-        class="small-12 grid-x detail"
+        class="small-12 detail"
       >
-        <div>
-          Partner: {{ item.attributes.partner_name }}
+        <div class="grid-x">
+          <div class="small-3">
+            <font-awesome-icon
+              icon="handshake"
+              fixed-width
+            />
+          </div>
+          <div class="small-21">
+            <a :href="item.attributes.website">{{ item.attributes.partner_name }}</a>
+          </div>
+        </div>
+        <div class="grid-x">
+          <div class="small-3">
+            <font-awesome-icon
+              icon="map-marker-alt"
+              fixed-width
+            />
+          </div>
+          <div class="small-21">
+            {{ address }}<br>
+            Philadelphia, PA {{ zipcode }}
+          </div>
         </div>
       </div>
-
       <div
         v-if="item.attributes.programming_type"
-        class="small-12 grid-x detail"
+        class="small-12 detail"
       >
-        <div>
-          Programming Type: {{ item.attributes.programming_type }}
-        </div>
-      </div>
+        <div><b>Contact information</b></div>
 
-      <div
-        v-if="item.attributes.registration_start_date"
-        class="small-12 grid-x detail"
-      >
-        <div>
-          Registration Start Date: {{ regStartDate }}
+        <div class="grid-x">
+          <div class="small-3">
+            <font-awesome-icon
+              icon="map-marker-alt"
+              fixed-width
+            />
+          </div>
+          <div class="small-21">
+            {{ item.attributes.primary_contact }}
+          </div>
+        </div>
+        <div class="grid-x">
+          <div class="small-3">
+            <font-awesome-icon
+              icon="phone"
+              fixed-width
+            />
+          </div>
+          <div class="small-21">
+            {{ item.attributes.contact_phone_number }}
+          </div>
+        </div>
+        <div class="grid-x">
+          <div class="small-3">
+            <font-awesome-icon
+              icon="envelope"
+              fixed-width
+            />
+          </div>
+          <div class="small-21">
+            <a :href="item.attributes.contact_email_address">{{ item.attributes.contact_email_address }}</a>
+          </div>
         </div>
       </div>
-
-      <div
-        v-if="item.attributes.registration_end_date"
-        class="small-12 grid-x detail"
-      >
-        <div>
-          Registration End Date: {{ regEndDate }}
+    </div>
+    <hr>
+    <div
+      v-if="item.attributes.registration_start_date"
+      class="small-24 detail"
+    >
+      <div class="grid-x">
+        <div class="medium-6">
+          Register
+        </div>
+        <div class="medium-6">
+          {{ regStartDate }} - {{ regEndDate }}
+        </div>
+        <div class="medium-6">
+          <div
+            v-if="regLabel === 'open'"
+            class="open label"
+          >
+            Registration open 
+          </div>
+          <div
+            v-if="regLabel === 'upcoming'"
+            class="upcoming label"
+          >
+            Registration upcoming 
+          </div>
+          <div
+            v-if="regLabel === 'closed'"
+            class="closed label"
+          >
+            Registration closed 
+          </div>
         </div>
       </div>
+      <hr>
 
       <div
         v-if="item.attributes.program_start_date"
-        class="small-12 grid-x detail"
+        class="small-24 detail"
       >
-        <div>
-          Program Start Date: {{ progStartDate }}
+        <div class="grid-x">
+          <div class="medium-6">
+            Open to
+          </div>
+          <div class="medium-6">
+            {{ schoolType }}
+          </div>
         </div>
-      </div>
 
-      <div
-        v-if="item.attributes.program_end_date"
-        class="small-12 grid-x detail"
-      >
-        <div>
-          Programming End Date: {{ progEndDate }}
-        </div>
-      </div>
 
-    </div>
+        <div class="grid-x">
+          <div class="medium-6">
+            Program dates
+          </div>
+          <div class="medium-6">
+            {{ progStartDate }} - {{ progEndDate }}
+            <div
+              v-for="(day, index) of days"
+              :key="index"
+            >
+              <div
+                class="columns is-mobile no-margins"
+              >
+                <div class="table-column is-paddingless standard-width is-captialized">
+                  {{ day.label }}
+                </div>
 
-    <div class="columns is-mobile no-margins">
-      <div class="column is-one-quarter is-paddingless">
-        <div>Hours</div>
-      </div>
-
-      <div class="column is-paddingless">
-        <div
-          v-for="(day, index) of days"
-          :key="index"
-        >
-          <div
-            class="columns is-mobile no-margins"
-          >
-            <div class="table-column is-paddingless standard-width">
-              {{ day.label }}
-            </div>
-
-            <div class="table-column is-paddingless">
-              {{ day.value }}
+                <div class="table-column is-paddingless">
+                  {{ day.value }}
+                </div>
+              </div>
+              <hr
+                v-if="day.label != lastDay"
+                class="no-margins"
+              >
             </div>
           </div>
-          <hr
-            v-if="day.label != lastDay"
-            class="no-margins"
-          >
         </div>
       </div>
     </div>
@@ -151,7 +193,6 @@
         <div>{{ $t('closure') }}: {{ transforms.toLocaleDateString.transform(item.attributes.TEMPCLOSE) }}</div>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -181,22 +222,60 @@ export default {
       return parseInt(format(dateStart, 'T'));
     },
     regStartDate() {
-      return format(this.$props.item.attributes.registration_start_date, 'MMM dd');
+      return format(this.$props.item.attributes.registration_start_date, 'MMMM dd');
+    },
+    regLabel(){
+
+
+      // let allReg = ['upcoming', 'open', 'closed'];
+      // let item = this.item;
+      // let theFields = [];
+      // let niceName = '';
+      
+      //for (let [ index, type ] of allReg.entries()) {
+
+      if ( this.item.attributes.registration_start_date >= this.currentUnixDate ){
+        return "upcoming";
+      }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.registration_end_date >= this.currentUnixDate){
+        return  "open";
+      }else if (this.item.attributes.registration_end_date >= this.currentUnixDate  ){
+        return "closed";
+      }
+      return '';
+      
+
+      // let regObject = {
+      //     label: type,
+      //     labelType: 'i18n',
+      //     value: niceName,
+      //   };
+      //   theFields.push(regObject);
+      // }
+      // return theFields;
     },
     regEndDate() {
-      return format(this.$props.item.attributes.registration_end_date, 'MMM dd');
+      return format(this.$props.item.attributes.registration_end_date, 'MMMM dd, yyyy');
     },
     progStartDate() {
-      return format(this.$props.item.attributes.program_start_date, 'MMM dd');
+      return format(this.$props.item.attributes.program_start_date, 'MMMM dd');
     },
     progEndDate() {
-      return format(this.$props.item.attributes.program_end_date, 'MMM dd');
+      return format(this.$props.item.attributes.program_end_date, 'MMMM dd, yyyy');
     },
     transforms() {
       return transforms;
     },
     address() {
       return this.$props.item.attributes.address;
+    },
+    schoolType(){
+      if ( this.$props.item.attributes.school_type === 'middle_school' ) {
+        return 'Middle school students';
+      }else if (this.$props.item.attributes.school_type === 'high_school'){
+        return 'High school students';
+      }
+      return 'Elementary school students';
+      
     },
     activityType() {
       return this.$props.item.attributes.activity_type;
@@ -234,14 +313,16 @@ export default {
           } else if (!normallyOpen && holidayYesterday) {
             hours = item.attributes[yesterday];
           }
-
-          let dayObject = {
-            label: day,
-            labelType: 'i18n',
-            value: hours,
-            // valueType: 'i18n',
-          };
-          theFields.push(dayObject);
+          
+          if (item.attributes[day] != 'Closed') {
+            let dayObject = {
+              label: day,
+              labelType: 'i18n',
+              value: hours,
+              // valueType: 'i18n',
+            };
+            theFields.push(dayObject);
+          }
         }
       }
       return theFields;
@@ -284,6 +365,21 @@ export default {
 </script>
 
 <style lang="scss">
+
+.label {
+  padding: 3px 10px;
+  text-transform: uppercase;
+  font-weight:bold;
+  &.open{
+    background-color: #C5F1B7;
+  }
+  &.closed{
+    background-color: #F7D2D1;
+  }
+  &.upcoming{
+    background-color: #FDF0AB;
+  }
+}
 
 .table-column {
   display: inline-block;
@@ -363,5 +459,8 @@ export default {
       overflow: initial;
     }
   }
+}
+.is-captialized{
+  text-transform: capitalize;
 }
 </style>

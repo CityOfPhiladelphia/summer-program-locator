@@ -32,9 +32,9 @@ import PhilaButton from '@phila/pinboard/src/components/PhilaButton.vue';
 export default {
   name: 'CustomGreeting',
   components: {
-    PhilaButton
+    PhilaButton,
   },
-}
+};
 
 </script>
 
