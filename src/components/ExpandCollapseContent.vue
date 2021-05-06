@@ -113,7 +113,7 @@
           <div class="cell medium-6 bottom-spacer">
             Open to
           </div>
-          <div class="cell medium-6 bottom-spacer">
+          <div class="cell medium-8 bottom-spacer">
             {{ schoolType }}
           </div>
         </div>
