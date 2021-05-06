@@ -3,7 +3,7 @@
     <div class="grid-x">
       <div
         v-if="item.attributes.partner_name"
-        class="small-12 detail"
+        class="medium-14 small-24 detail"
       >
         <div class="grid-x">
           <div class="small-3 cell bottom-spacer">
@@ -31,7 +31,7 @@
       </div>
       <div
         v-if="item.attributes.programming_type"
-        class="small-11 detail"
+        class="medium-10 small-24 detail"
       >
         <div><b>Contact information</b></div>
 
@@ -76,13 +76,29 @@
       class="cell small-24 detail"
     >
       <div class="grid-x">
-        <div class="cell medium-6 bottom-spacer">
+        <div class="cell small-6 bottom-spacer small-order medium-order-1">
           Register
         </div>
-        <div class="cell medium-7">
-          {{ regStartDate }} - {{ regEndDate }}
+        <div class="cell small-8 small-order-2 medium-order-1">
+          {{ regStartDate }} &ndash; {{ regEndDate }}
+
+          <div
+            v-if="regLabel === 'open'"
+          >
+            Use the contact information for this site to register.
+          </div>
+          <div
+            v-if="regLabel === 'upcoming'"
+          >
+            Wait until the registration start date to contact this site. 
+          </div>
+          <div
+            v-if="regLabel === 'closed'"
+          >
+            You cannot register for this program.  
+          </div>
         </div>
-        <div class="medium-11">
+        <div class="medium-10 small-24 small-order-1 bottom-spacer medium-order-2">
           <div
             v-if="regLabel === 'open'"
             class="open label"
@@ -110,23 +126,30 @@
         class="small-24 detail"
       >
         <div class="grid-x">
-          <div class="cell medium-6 bottom-spacer">
+          <div class="cell small-6 bottom-spacer">
             Open to
           </div>
-          <div class="cell medium-8 bottom-spacer">
+          <div class="cell small-8 bottom-spacer">
             {{ schoolType }}
           </div>
         </div>
 
 
         <div class="grid-x">
-          <div class="cell medium-6 ">
+          <div class="cell small-6 ">
             Program dates
           </div>
-          <div class="cell medium-8">
+          <div class="cell small-8">
             <div class="bottom-spacer">
-              {{ progStartDate }} - {{ progEndDate }}
+              {{ progStartDate }}  &ndash; {{ progEndDate }}
             </div>
+          </div>
+        </div>
+        <div class="grid-x">
+          <div class="cell small-6">
+            Schedule
+          </div>
+          <div class="cell small-8">
             <div
               v-for="(day, index) of days"
               :key="index"
@@ -474,5 +497,12 @@ export default {
 }
 .no-margins{
   margin: 0;
+
+}
+@media screen and (max-width: 40em) {
+  hr {
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+  }
 }
 </style>
