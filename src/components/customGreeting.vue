@@ -22,7 +22,9 @@
         v-html="$t('app.viewList')"
       />
     </div>
-    <h1>About this finder</h1>
+    <h1 class="h2">
+      About this finder
+    </h1>
     <p>This tool can help you find free, in-person summer camps and programs for children and teens in Philadelphia. </p>
     <div>
       You can: 
@@ -31,6 +33,23 @@
         <li>Click on a map location for specific site information. </li>
         <li>Filter sites by grade level and registration status. </li>
       </ul>
+    </div>
+    <h2 class="h3">
+      Who is eligible
+    </h2>
+    <p>Children and teens who live in Philadelphia can take part in free, in-person summer camps and programs. You must register youth for these programs in advance.  </p>
+    <h2 class="h3">
+      When programs occur
+    </h2>
+    <p>Program schedules vary by location. Click on a specific site on the map for details on start and end dates, as well as program days and times. </p>
+    <h2 class="h3">
+      How to register
+    </h2>
+    <p>Click on a program and use its contact information to begin the registration process.</p>
+    <div class="custom-callout">
+      <strong>Looking for more summer opportunities?</strong><br><p class="no-margin">
+        Visit <a href="https://www.phila.gov/programs/playitsafephl/">phila.gov/PlayItSafePHL</a> to find free meals, virtual activities, jobs for teens, and more.
+      </p>
     </div>
   </div>
 </template>
@@ -113,5 +132,11 @@ export default {
       height: calc(100vh - 120px);
       overflow: auto;
     }
+  }
+
+  .custom-callout{
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
   }
 </style>

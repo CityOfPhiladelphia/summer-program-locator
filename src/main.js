@@ -107,7 +107,7 @@ pinboard({
   },
   projection: '3857',
   footer: {
-    'aboutFinder': false,
+    'aboutFinder': true,
   },
   cyclomedia: {
     enabled: false,

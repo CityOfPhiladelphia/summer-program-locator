@@ -82,7 +82,7 @@
         <div class="cell medium-7">
           {{ regStartDate }} - {{ regEndDate }}
         </div>
-        <div class="medium-7">
+        <div class="medium-11">
           <div
             v-if="regLabel === 'open'"
             class="open label"
