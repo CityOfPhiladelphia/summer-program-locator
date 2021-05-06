@@ -108,6 +108,13 @@ pinboard({
   projection: '3857',
   footer: {
     'aboutFinder': true,
+    'HowToUse': false,
+    'OtherLinks': {
+      locations: {
+        text: 'PlayItSafePHL',
+        link: 'https://www.phila.gov/programs/playitsafephl/',
+      },
+    },
   },
   cyclomedia: {
     enabled: false,

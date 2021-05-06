@@ -2,19 +2,6 @@
   <div
     class="grid-y custom-greeting"
   >
-    <div class="exclamation-holder">
-      <font-awesome-icon
-        icon="exclamation-triangle"
-        class="fa-3x fa-icon-class"
-      />
-      <div
-        class="grid-y exclamation-details small-19 medium-20"
-      >
-        <div><b>Before you go:</b></div>
-        <div>Check the specific site information. Hours are subject to change.</div>
-      </div>
-    </div>
-
     <div class="open-list-div">
       <phila-button
         class="button open-list-button"
