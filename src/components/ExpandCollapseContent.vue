@@ -3,21 +3,27 @@
     <div class="grid-x">
       <div
         v-if="item.attributes.partner_name"
-        class="medium-14 small-24 detail"
+        class="medium-14 small-24"
       >
         <div class="grid-x">
-          <div class="small-3 cell bottom-spacer">
+          <div class="small-2 medium-3 cell bottom-spacer">
             <font-awesome-icon
               icon="handshake"
               fixed-width
             />
           </div>
           <div class="small-21 cell bottom-spacer">
-            <a :href="item.attributes.website">{{ item.attributes.partner_name }}</a>
+            <a :href="item.attributes.website">{{ item.attributes.partner_name }}
+              <i v-if="externalCheck">            
+                <font-awesome-icon
+                  icon="external-link-alt"
+                  fixed-width
+                  class="external"
+                /></i></a>
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3 cell bottom-spacer">
+          <div class="small-2 medium-3 cell bottom-spacer">
             <font-awesome-icon
               icon="map-marker-alt"
               fixed-width
@@ -31,12 +37,12 @@
       </div>
       <div
         v-if="item.attributes.programming_type"
-        class="medium-10 small-24 detail"
+        class="medium-10 small-24"
       >
         <div><b>Contact information</b></div>
 
         <div class="grid-x">
-          <div class="small-3 cell small-bottom-spacer">
+          <div class="small-2 medium-3 cell small-bottom-spacer">
             <font-awesome-icon
               icon="user"
               fixed-width
@@ -47,7 +53,7 @@
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3 cell small-bottom-spacer">
+          <div class="small-2 medium-3 cell small-bottom-spacer">
             <font-awesome-icon
               icon="phone"
               fixed-width
@@ -58,14 +64,14 @@
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3 cell small-bottom-spacer">
+          <div class="small-2 medium-3 cell">
             <font-awesome-icon
               icon="envelope"
               fixed-width
             />
           </div>
-          <div class="small-21 cell small-bottom-spacer">
-            <a :href="item.attributes.contact_email_address">{{ item.attributes.contact_email_address }}</a>
+          <div class="small-21 cell">
+            <a :href="'mailto:'+item.attributes.contact_email_address">{{ item.attributes.contact_email_address }}</a>
           </div>
         </div>
       </div>
@@ -79,7 +85,7 @@
         <div class="cell small-6 bottom-spacer small-order-2 medium-order-1">
           Register
         </div>
-        <div class="cell small-10 medium-8 small-order-2 medium-order-1">
+        <div class="cell auto medium-8 small-order-2 medium-order-1">
           {{ regStartDate }} &ndash; {{ regEndDate }}
         </div>
         <div class="medium-10 small-24 small-order-1 bottom-spacer medium-order-2">
@@ -104,23 +110,23 @@
         </div>
       </div>
       <div class="grid-x">
-        <div class="cell medium-6 hide-for-small-only" />
+        <div class="cell small-6" />
         <div class="cell auto">
-          <div
+          <p
             v-if="regLabel === 'open'"
           >
             Use the contact information for this site to register.
-          </div>
-          <div
+          </p>
+          <p
             v-if="regLabel === 'upcoming'"
           >
             Wait until the registration start date to contact this site. 
-          </div>
-          <div
+          </p>
+          <p
             v-if="regLabel === 'closed'"
           >
             You cannot register for this program.  
-          </div>
+          </p>
         </div>
       </div>
       <hr>
@@ -140,7 +146,7 @@
 
 
         <div class="grid-x">
-          <div class="cell small-6 ">
+          <div class="cell small-6 bottom-spacer">
             Program dates
           </div>
           <div class="cell auto">
@@ -368,6 +374,13 @@ export default {
       }
       return value;
     },
+    externalCheck(){
+      if (!this.$props.item.attributes.website.includes("www.phila.gov")){
+        return true;
+      }
+      return false;
+      
+    },
   },
   methods: {
     parseAddress(address) {
@@ -504,13 +517,12 @@ export default {
 }
 
 .no-margins{
-  margin: 0;
-
+  margin: 0 !important;
 }
 @media screen and (max-width: 40em) {
   hr {
-      margin-left: 0 !important;
-      margin-right: 0 !important;
+      margin: 0 0 1.5rem 0 !important;
   }
 }
+
 </style>

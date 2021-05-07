@@ -18,7 +18,9 @@ import { faExclamationTriangle } from '@fortawesome/free-solid-svg-icons/faExcla
 import { faHandHoldingHeart } from '@fortawesome/free-solid-svg-icons/faHandHoldingHeart';
 import { faHandshake } from '@fortawesome/free-solid-svg-icons/faHandshake';
 
-library.add(faExclamationTriangle, faHandHoldingHeart, faHandshake);
+import { faExternalLinkAlt } from '@fortawesome/free-solid-svg-icons/faExternalLinkAlt';
+
+library.add(faExclamationTriangle, faHandHoldingHeart, faHandshake, faExternalLinkAlt);
 
 // import pinboard
 import pinboard from '@phila/pinboard/src/main.js';
