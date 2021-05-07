@@ -79,7 +79,7 @@
         <div class="cell small-6 bottom-spacer small-order-2 medium-order-1">
           Register
         </div>
-        <div class="cell small-10 small-order-2 medium-order-1">
+        <div class="cell small-10 medium-8 small-order-2 medium-order-1">
           {{ regStartDate }} &ndash; {{ regEndDate }}
         </div>
         <div class="medium-10 small-24 small-order-1 bottom-spacer medium-order-2">
