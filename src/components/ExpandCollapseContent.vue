@@ -23,7 +23,7 @@
               fixed-width
             />
           </div>
-          <div class="small-21 cell bottom-spacer">
+          <div class="small-21 cell">
             {{ address }}<br>
             Philadelphia, PA {{ zipcode }}
           </div>
@@ -76,10 +76,10 @@
       class="cell small-24 detail"
     >
       <div class="grid-x">
-        <div class="cell small-6 bottom-spacer small-order medium-order-1">
+        <div class="cell small-6 bottom-spacer small-order-2 medium-order-1">
           Register
         </div>
-        <div class="cell small-8 small-order-2 medium-order-1">
+        <div class="cell small-10 small-order-2 medium-order-1">
           {{ regStartDate }} &ndash; {{ regEndDate }}
         </div>
         <div class="medium-10 small-24 small-order-1 bottom-spacer medium-order-2">
@@ -104,7 +104,7 @@
         </div>
       </div>
       <div class="grid-x">
-        <div class="cell medium-6" />
+        <div class="cell medium-6 hide-for-small-only" />
         <div class="cell auto">
           <div
             v-if="regLabel === 'open'"
@@ -133,7 +133,7 @@
           <div class="cell small-6 bottom-spacer">
             Open to
           </div>
-          <div class="cell small-8 bottom-spacer">
+          <div class="cell small-10 bottom-spacer">
             {{ schoolType }}
           </div>
         </div>
@@ -143,7 +143,7 @@
           <div class="cell small-6 ">
             Program dates
           </div>
-          <div class="cell small-8">
+          <div class="cell small-10">
             <div class="bottom-spacer">
               {{ progStartDate }}  &ndash; {{ progEndDate }}
             </div>
@@ -153,7 +153,7 @@
           <div class="cell small-6">
             Schedule
           </div>
-          <div class="cell small-8">
+          <div class="cell small-10">
             <div
               v-for="(day, index) of days"
               :key="index"
