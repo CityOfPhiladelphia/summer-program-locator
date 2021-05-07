@@ -133,7 +133,7 @@
           <div class="cell small-6 bottom-spacer">
             Open to
           </div>
-          <div class="cell small-10 bottom-spacer">
+          <div class="cell auto bottom-spacer">
             {{ schoolType }}
           </div>
         </div>
@@ -143,7 +143,7 @@
           <div class="cell small-6 ">
             Program dates
           </div>
-          <div class="cell small-10">
+          <div class="cell auto">
             <div class="bottom-spacer">
               {{ progStartDate }}  &ndash; {{ progEndDate }}
             </div>
@@ -153,7 +153,7 @@
           <div class="cell small-6">
             Schedule
           </div>
-          <div class="cell small-10">
+          <div class="cell medium-10 auto">
             <div
               v-for="(day, index) of days"
               :key="index"
