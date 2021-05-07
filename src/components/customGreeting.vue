@@ -12,7 +12,7 @@
     <h1 class="h2">
       About this finder
     </h1>
-    <p>This tool can help you find free, in-person summer camps and programs for children and teens in Philadelphia. </p>
+    <p>This tool can help you find in-person summer camps and programs for children and teens in Philadelphia. </p>
     <div>
       You can: 
       <ul>
@@ -24,7 +24,7 @@
     <h2 class="h3">
       Who is eligible
     </h2>
-    <p>Children and teens who live in Philadelphia can take part in free, in-person summer camps and programs. You must register youth for these programs in advance.  </p>
+    <p>Children and teens who live in Philadelphia can take part in in-person summer camps and programs. You must register youth for these programs in advance.  </p>
     <h2 class="h3">
       When programs occur
     </h2>
