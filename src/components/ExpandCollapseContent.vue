@@ -36,35 +36,35 @@
         <div><b>Contact information</b></div>
 
         <div class="grid-x">
-          <div class="small-3 cell bottom-spacer">
+          <div class="small-3 cell small-bottom-spacer">
             <font-awesome-icon
               icon="user"
               fixed-width
             />
           </div>
-          <div class="small-21 cell bottom-spacer">
+          <div class="small-21 cell small-bottom-spacer">
             {{ item.attributes.primary_contact }}
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3 cell bottom-spacer">
+          <div class="small-3 cell small-bottom-spacer">
             <font-awesome-icon
               icon="phone"
               fixed-width
             />
           </div>
-          <div class="small-21 cell bottom-spacer">
+          <div class="small-21 cell small-bottom-spacer">
             {{ item.attributes.contact_phone_number }}
           </div>
         </div>
         <div class="grid-x">
-          <div class="small-3 cell bottom-spacer">
+          <div class="small-3 cell small-bottom-spacer">
             <font-awesome-icon
               icon="envelope"
               fixed-width
             />
           </div>
-          <div class="small-21 cell bottom-spacer">
+          <div class="small-21 cell small-bottom-spacer">
             <a :href="item.attributes.contact_email_address">{{ item.attributes.contact_email_address }}</a>
           </div>
         </div>
@@ -81,22 +81,6 @@
         </div>
         <div class="cell small-8 small-order-2 medium-order-1">
           {{ regStartDate }} &ndash; {{ regEndDate }}
-
-          <div
-            v-if="regLabel === 'open'"
-          >
-            Use the contact information for this site to register.
-          </div>
-          <div
-            v-if="regLabel === 'upcoming'"
-          >
-            Wait until the registration start date to contact this site. 
-          </div>
-          <div
-            v-if="regLabel === 'closed'"
-          >
-            You cannot register for this program.  
-          </div>
         </div>
         <div class="medium-10 small-24 small-order-1 bottom-spacer medium-order-2">
           <div
@@ -116,6 +100,26 @@
             class="closed label"
           >
             Registration closed 
+          </div>
+        </div>
+      </div>
+      <div class="grid-x">
+        <div class="cell medium-6" />
+        <div class="cell auto">
+          <div
+            v-if="regLabel === 'open'"
+          >
+            Use the contact information for this site to register.
+          </div>
+          <div
+            v-if="regLabel === 'upcoming'"
+          >
+            Wait until the registration start date to contact this site. 
+          </div>
+          <div
+            v-if="regLabel === 'closed'"
+          >
+            You cannot register for this program.  
           </div>
         </div>
       </div>
@@ -279,13 +283,13 @@ export default {
       // return theFields;
     },
     regEndDate() {
-      return format(this.$props.item.attributes.registration_end_date, 'MMMM dd, yyyy');
+      return format(this.$props.item.attributes.registration_end_date, 'MMMM d, yyyy');
     },
     progStartDate() {
-      return format(this.$props.item.attributes.program_start_date, 'MMMM dd');
+      return format(this.$props.item.attributes.program_start_date, 'MMMM d');
     },
     progEndDate() {
-      return format(this.$props.item.attributes.program_end_date, 'MMMM dd, yyyy');
+      return format(this.$props.item.attributes.program_end_date, 'MMMM d, yyyy');
     },
     transforms() {
       return transforms;
@@ -495,6 +499,10 @@ export default {
 .bottom-spacer{
   margin-bottom: 1rem;
 }
+.small-bottom-spacer{
+  margin-bottom: .5rem;
+}
+
 .no-margins{
   margin: 0;
 
