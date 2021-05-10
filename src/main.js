@@ -36,6 +36,8 @@ const customComps = {
   'customGreeting': customGreeting,
 };
 
+import { format } from 'date-fns';
+
 pinboard({
   // baseConfig: BASE_CONFIG_URL,
   app: {
@@ -66,32 +68,74 @@ pinboard({
       return item.attributes.enabled_disabled === 'Enabled';
     },
   },
-  // refine: {
-  // type: 'multipleFieldGroups',
-  // patientAge: {
-  //   'High school': {
-  //     unique_key: 'high_school',
-  //     // i18n_key: 'patientAge.year18',
-  //     value: function(item) {
-  //       return item.attributes.school_type === 'high_school';
-  //     },
-  //   },
-  //   'Middle school': {
-  //     unique_key: 'middle_school',
-  //     // i18n_key: 'patientAge.year14',
-  //     value: function(item) {
-  //       return item.attributes.school_type === 'middle_school';
-  //     },
-  //   },
-  //   'Grade school': {
-  //     unique_key: 'elementary_school',
-  //     // i18n_key: 'patientAge.pedCare',
-  //     value: function(item) {
-  //       return item.attributes.school_type === 'elementary_school';
-  //     },
-  //   },
-  // },
-  // },
+  refine: {
+    type: 'multipleFieldGroups',
+    multipleFieldGroups: {
+      registrationStatus: {
+        'open': {
+          unique_key: 'open',
+          i18n_key: 'registrationStatus.open',
+          value: function(item) {
+            let currentYear = format(new Date(), 'yyyy');
+            let currentMonth = format(new Date(), 'MM');
+            let currentDay = format(new Date(), 'dd');
+            let dateStart = new Date(currentYear, currentMonth-1, currentDay);
+            let currentUnixDate = parseInt(format(dateStart, 'T'));
+            // console.log('item.attributes.registration_start_date:', item.attributes.registration_start_date, 'currentUnixDate:', currentUnixDate);
+            return item.attributes.registration_start_date <= currentUnixDate && item.attributes.registration_end_date >= currentUnixDate;
+          },
+        },
+        'upcoming': {
+          unique_key: 'upcoming',
+          i18n_key: 'registrationStatus.upcoming',
+          value: function(item) {
+            let currentYear = format(new Date(), 'yyyy');
+            let currentMonth = format(new Date(), 'MM');
+            let currentDay = format(new Date(), 'dd');
+            let dateStart = new Date(currentYear, currentMonth-1, currentDay);
+            let currentUnixDate = parseInt(format(dateStart, 'T'));
+            // console.log('item.attributes.registration_start_date:', item.attributes.registration_start_date, 'currentUnixDate:', currentUnixDate);
+            return item.attributes.registration_start_date > currentUnixDate;
+          },
+        },
+        'closed': {
+          unique_key: 'closed',
+          i18n_key: 'registrationStatus.closed',
+          value: function(item) {
+            let currentYear = format(new Date(), 'yyyy');
+            let currentMonth = format(new Date(), 'MM');
+            let currentDay = format(new Date(), 'dd');
+            let dateStart = new Date(currentYear, currentMonth-1, currentDay);
+            let currentUnixDate = parseInt(format(dateStart, 'T'));
+            // console.log('item.attributes.registration_start_date:', item.attributes.registration_start_date, 'currentUnixDate:', currentUnixDate);
+            return item.attributes.registration_end_date < currentUnixDate;
+          },
+        },
+      },
+      // patientAge: {
+      //   'High school': {
+      //     unique_key: 'high_school',
+      //     // i18n_key: 'patientAge.year18',
+      //     value: function(item) {
+      //       return item.attributes.school_type === 'high_school';
+      //     },
+      //   },
+      //   'Middle school': {
+      //     unique_key: 'middle_school',
+      //     // i18n_key: 'patientAge.year14',
+      //     value: function(item) {
+      //       return item.attributes.school_type === 'middle_school';
+      //     },
+      //   },
+      //   'Grade school': {
+      //     unique_key: 'elementary_school',
+      //     // i18n_key: 'patientAge.pedCare',
+      //     value: function(item) {
+      //       return item.attributes.school_type === 'elementary_school';
+      //     },
+      //   },
+    },
+  },
   dataSources: {
     ocfData,
   },
@@ -310,6 +354,12 @@ pinboard({
           No: 'No',
           Unknown: 'Unknown',
           website: 'Website',
+          registrationStatus: {
+            category: 'Registration Status',
+            open: 'Open',
+            upcoming: 'Upcoming',
+            closed: 'Closed',
+          },
           process: {
             category: 'Process',
             dt: 'Drive-thru',
