@@ -63,14 +63,58 @@ pinboard({
       return item.attributes.site_name;
     },
   },
-  hiddenRefine: {
-    Enabled: function(item) {
-      return item.attributes.enabled_disabled === 'Enabled';
-    },
-  },
+  // hiddenRefine: {
+  //   Enabled: function(item) {
+  //     return item.attributes.enabled_disabled === 'Enabled';
+  //   },
+  // },
   refine: {
     type: 'multipleFieldGroups',
     multipleFieldGroups: {
+      openTo: {
+        'elementary': {
+          unique_key: 'elementary',
+          i18n_key: 'openTo.elementary',
+          value: function(item) {
+            console.log('item:', item);
+            let value;
+            if (item.attributes.elementary_school === "Yes") {
+              value = true;
+            } else {
+              value = false;
+            }
+            return value;
+          },
+        },
+        'middle': {
+          unique_key: 'middle',
+          i18n_key: 'openTo.middle',
+          value: function(item) {
+            console.log('item:', item);
+            let value;
+            if (item.attributes.middle_school === "Yes") {
+              value = true;
+            } else {
+              value = false;
+            }
+            return value;
+          },
+        },
+        'high': {
+          unique_key: 'high',
+          i18n_key: 'openTo.high',
+          value: function(item) {
+            console.log('item:', item);
+            let value;
+            if (item.attributes.high_school === "Yes") {
+              value = true;
+            } else {
+              value = false;
+            }
+            return value;
+          },
+        },
+      },
       registrationStatus: {
         'open': {
           unique_key: 'open',
@@ -112,28 +156,6 @@ pinboard({
           },
         },
       },
-      // patientAge: {
-      //   'High school': {
-      //     unique_key: 'high_school',
-      //     // i18n_key: 'patientAge.year18',
-      //     value: function(item) {
-      //       return item.attributes.school_type === 'high_school';
-      //     },
-      //   },
-      //   'Middle school': {
-      //     unique_key: 'middle_school',
-      //     // i18n_key: 'patientAge.year14',
-      //     value: function(item) {
-      //       return item.attributes.school_type === 'middle_school';
-      //     },
-      //   },
-      //   'Grade school': {
-      //     unique_key: 'elementary_school',
-      //     // i18n_key: 'patientAge.pedCare',
-      //     value: function(item) {
-      //       return item.attributes.school_type === 'elementary_school';
-      //     },
-      //   },
     },
   },
   dataSources: {
@@ -151,7 +173,7 @@ pinboard({
       include_units: true,
     },
   },
-  projection: '3857',
+  // projection: '3857',
   footer: {
     'aboutFinder': true,
     'HowToUse': false,
@@ -355,10 +377,16 @@ pinboard({
           Unknown: 'Unknown',
           website: 'Website',
           registrationStatus: {
-            category: 'Registration Status',
+            category: 'Registration status',
             open: 'Open',
             upcoming: 'Upcoming',
             closed: 'Closed',
+          },
+          openTo: {
+            category: 'Open to',
+            elementary: 'Elementary school',
+            middle: 'Middle school',
+            high: 'High school',
           },
           process: {
             category: 'Process',

@@ -14,7 +14,7 @@
           </div>
           <div class="small-21 cell bottom-spacer">
             <a :href="item.attributes.website">{{ item.attributes.partner_name }}
-              <i v-if="externalCheck">            
+              <i v-if="externalCheck">
                 <font-awesome-icon
                   icon="external-link-alt"
                   fixed-width
@@ -93,19 +93,19 @@
             v-if="regLabel === 'open'"
             class="open label"
           >
-            Registration open 
+            Registration open
           </div>
           <div
             v-if="regLabel === 'upcoming'"
             class="upcoming label"
           >
-            Registration upcoming 
+            Registration upcoming
           </div>
           <div
             v-if="regLabel === 'closed'"
             class="closed label"
           >
-            Registration closed 
+            Registration closed
           </div>
         </div>
       </div>
@@ -120,12 +120,12 @@
           <p
             v-if="regLabel === 'upcoming'"
           >
-            Wait until the registration start date to contact this site. 
+            Wait until the registration start date to contact this site.
           </p>
           <p
             v-if="regLabel === 'closed'"
           >
-            You cannot register for this program.  
+            You cannot register for this program.
           </p>
         </div>
       </div>
@@ -265,19 +265,19 @@ export default {
       // let item = this.item;
       // let theFields = [];
       // let niceName = '';
-      
+
       //for (let [ index, type ] of allReg.entries()) {
 
       if ( this.item.attributes.registration_start_date >= this.currentUnixDate ){
         return "upcoming";
-      }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.registration_end_date >= this.currentUnixDate){
+      }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.regstration_end_date >= this.currentUnixDate){
         return  "open";
-      }else if (this.item.attributes.registration_end_date >= this.currentUnixDate  ){
+      }else if (this.item.attributes.regstration_end_date >= this.currentUnixDate  ){
         return "closed";
       }
       //TODO FIX THIS WHOLE THING
       return '';
-      
+
 
       // let regObject = {
       //     label: type,
@@ -289,7 +289,7 @@ export default {
       // return theFields;
     },
     regEndDate() {
-      return format(this.$props.item.attributes.registration_end_date, 'MMMM d, yyyy');
+      return format(this.$props.item.attributes.regstration_end_date, 'MMMM d, yyyy');
     },
     progStartDate() {
       return format(this.$props.item.attributes.program_start_date, 'MMMM d');
@@ -310,7 +310,7 @@ export default {
         return 'High school students';
       }
       return 'Elementary school students';
-      
+
     },
     activityType() {
       return this.$props.item.attributes.activity_type;
@@ -348,7 +348,7 @@ export default {
           } else if (!normallyOpen && holidayYesterday) {
             hours = item.attributes[yesterday];
           }
-          
+
           if (item.attributes[day] != 'Closed') {
             let dayObject = {
               label: day,
@@ -379,7 +379,7 @@ export default {
         return true;
       }
       return false;
-      
+
     },
   },
   methods: {
