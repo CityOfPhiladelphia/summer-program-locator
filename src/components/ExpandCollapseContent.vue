@@ -262,7 +262,7 @@ export default {
       return parseInt(format(dateStart, 'T'));
     },
     regStartDate() {
-      return format(this.$props.item.attributes.registration_start_date, 'MMMM dd');
+      return format(this.$props.item.attributes.registration_start_date, 'MMMM d');
     },
     regLabel(){
 
