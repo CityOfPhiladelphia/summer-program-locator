@@ -76,7 +76,7 @@ pinboard({
           unique_key: 'elementary',
           i18n_key: 'openTo.elementary',
           value: function(item) {
-            console.log('item:', item);
+            // console.log('item:', item);
             let value;
             if (item.attributes.elementary_school === "Yes") {
               value = true;
@@ -90,7 +90,7 @@ pinboard({
           unique_key: 'middle',
           i18n_key: 'openTo.middle',
           value: function(item) {
-            console.log('item:', item);
+            // console.log('item:', item);
             let value;
             if (item.attributes.middle_school === "Yes") {
               value = true;
@@ -104,7 +104,7 @@ pinboard({
           unique_key: 'high',
           i18n_key: 'openTo.high',
           value: function(item) {
-            console.log('item:', item);
+            // console.log('item:', item);
             let value;
             if (item.attributes.high_school === "Yes") {
               value = true;

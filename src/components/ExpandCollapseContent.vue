@@ -140,7 +140,12 @@
             Open to
           </div>
           <div class="cell auto bottom-spacer">
-            {{ schoolType }}
+            <div
+              v-for="school of schoolType"
+              :key="school"
+            >
+              {{ school }}
+            </div>
           </div>
         </div>
 
@@ -304,12 +309,17 @@ export default {
       return this.$props.item.attributes.address;
     },
     schoolType(){
-      if ( this.$props.item.attributes.school_type === 'middle_school' ) {
-        return 'Middle school students';
-      }else if (this.$props.item.attributes.school_type === 'high_school'){
-        return 'High school students';
+      let values = [];
+      if (this.$props.item.attributes.elementary_school === 'Yes' ) {
+        values.push('Elementary school students');
       }
-      return 'Elementary school students';
+      if (this.$props.item.attributes.middle_school === 'Yes' ) {
+        values.push('Middle school students');
+      }
+      if (this.$props.item.attributes.high_school === 'Yes'){
+        values.push('High school students');
+      }
+      return values;
 
     },
     activityType() {
