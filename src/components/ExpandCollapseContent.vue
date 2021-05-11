@@ -270,9 +270,9 @@ export default {
 
       if ( this.item.attributes.registration_start_date >= this.currentUnixDate ){
         return "upcoming";
-      }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.regstration_end_date >= this.currentUnixDate){
+      }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.registration_end_date >= this.currentUnixDate){
         return  "open";
-      }else if (this.item.attributes.regstration_end_date >= this.currentUnixDate  ){
+      }else if (this.item.attributes.registration_end_date >= this.currentUnixDate  ){
         return "closed";
       }
       //TODO FIX THIS WHOLE THING
@@ -289,7 +289,7 @@ export default {
       // return theFields;
     },
     regEndDate() {
-      return format(this.$props.item.attributes.regstration_end_date, 'MMMM d, yyyy');
+      return format(this.$props.item.attributes.registration_end_date, 'MMMM d, yyyy');
     },
     progStartDate() {
       return format(this.$props.item.attributes.program_start_date, 'MMMM d');
