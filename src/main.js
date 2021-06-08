@@ -73,7 +73,7 @@ pinboard({
     multipleFieldGroups: {
       openTo: {
         'elementary': {
-          unique_key: 'elementary',
+          unique_key: 'openTo_elementary',
           i18n_key: 'openTo.elementary',
           value: function(item) {
             // console.log('item:', item);
@@ -87,7 +87,7 @@ pinboard({
           },
         },
         'middle': {
-          unique_key: 'middle',
+          unique_key: 'openTo_middle',
           i18n_key: 'openTo.middle',
           value: function(item) {
             // console.log('item:', item);
@@ -101,7 +101,7 @@ pinboard({
           },
         },
         'high': {
-          unique_key: 'high',
+          unique_key: 'openTo_high',
           i18n_key: 'openTo.high',
           value: function(item) {
             // console.log('item:', item);
@@ -115,10 +115,10 @@ pinboard({
           },
         },
       },
-      registrationStatus: {
+      regStatus: {
         'open': {
-          unique_key: 'open',
-          i18n_key: 'registrationStatus.open',
+          unique_key: 'regStatus_open',
+          i18n_key: 'regStatus.open',
           value: function(item) {
             let currentYear = format(new Date(), 'yyyy');
             let currentMonth = format(new Date(), 'MM');
@@ -130,8 +130,8 @@ pinboard({
           },
         },
         'upcoming': {
-          unique_key: 'upcoming',
-          i18n_key: 'registrationStatus.upcoming',
+          unique_key: 'regStatus_upcoming',
+          i18n_key: 'regStatus.upcoming',
           value: function(item) {
             let currentYear = format(new Date(), 'yyyy');
             let currentMonth = format(new Date(), 'MM');
@@ -143,8 +143,8 @@ pinboard({
           },
         },
         'closed': {
-          unique_key: 'closed',
-          i18n_key: 'registrationStatus.closed',
+          unique_key: 'regStatus_closed',
+          i18n_key: 'regStatus.closed',
           value: function(item) {
             let currentYear = format(new Date(), 'yyyy');
             let currentMonth = format(new Date(), 'MM');
@@ -376,7 +376,7 @@ pinboard({
           No: 'No',
           Unknown: 'Unknown',
           website: 'Website',
-          registrationStatus: {
+          regStatus: {
             category: 'Registration status',
             open: 'Open',
             upcoming: 'Upcoming',
