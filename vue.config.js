@@ -1,5 +1,6 @@
 module.exports = {
-  publicPath: '/summer-program/prod/',
+  //publicPath: '/summer-program/prod/',
+  publicPath: '/summer-programs/',
   chainWebpack: (config) => {
     config.resolve.symlinks(false);
   },

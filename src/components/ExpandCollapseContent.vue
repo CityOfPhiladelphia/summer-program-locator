@@ -36,7 +36,7 @@
         </div>
       </div>
       <div
-        v-if="item.attributes.programming_type"
+        v-if="item.attributes.primary_contact"
         class="medium-10 small-24"
       >
         <div><b>Contact information</b></div>
@@ -262,7 +262,7 @@ export default {
       return parseInt(format(dateStart, 'T'));
     },
     regStartDate() {
-      return format(this.$props.item.attributes.registration_start_date, 'MMMM dd');
+      return format(this.$props.item.attributes.registration_start_date, 'MMMM d');
     },
     regLabel(){
 
@@ -272,12 +272,13 @@ export default {
       // let niceName = '';
 
       //for (let [ index, type ] of allReg.entries()) {
-
+      
+      
       if ( this.item.attributes.registration_start_date >= this.currentUnixDate ){
         return "upcoming";
       }else if (this.item.attributes.registration_start_date <= this.currentUnixDate && this.$props.item.attributes.registration_end_date >= this.currentUnixDate){
         return  "open";
-      }else if (this.item.attributes.registration_end_date >= this.currentUnixDate  ){
+      }else if (this.item.attributes.registration_end_date >= this.currentUnixDate || this.item.attributes.registration_start_date === null ){
         return "closed";
       }
       //TODO FIX THIS WHOLE THING
@@ -306,7 +307,7 @@ export default {
       return transforms;
     },
     address() {
-      return this.$props.item.attributes.address;
+      return this.$props.item.attributes.address_line_1;
     },
     schoolType(){
       let values = [];
@@ -381,11 +382,16 @@ export default {
         value = this.$props.item.attributes.ZIP2;
       } else if (this.$props.item.attributes.ZIP_CODE) {
         value = this.$props.item.attributes.ZIP_CODE;
+      } else if (this.$props.item.attributes.zip_code) {
+        value = this.$props.item.attributes.zip_code;
       }
       return value;
     },
     externalCheck(){
-      if (!this.$props.item.attributes.website.includes("www.phila.gov")){
+      if ( this.$props.item.attributes.website === null ){
+        return;
+      }
+      if (!this.$props.item.attributes.website.includes( "www.phila.gov" ) ){
         return true;
       }
       return false;
